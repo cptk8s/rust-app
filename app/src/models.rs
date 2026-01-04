@@ -33,3 +33,13 @@ pub struct CreateComunicacion {
     pub usuario_id: i32,
     pub resumen: String,
 }
+#[derive(serde::Deserialize, utoipa::ToSchema)]
+pub struct LoginRequest {
+    pub usuario: String,
+    pub clave: String,
+}
+
+#[derive(serde::Serialize, utoipa::ToSchema)]
+pub struct LoginResponse {
+    pub token: String,
+}

@@ -1,8 +1,9 @@
 mod models;
 mod handlers;
+mod auth;
 mod openapi;
 
-use axum::{routing::{get, delete}, Router};
+use axum::{routing::{get, post, delete}, Router};
 use std::sync::{Arc, RwLock};
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
@@ -17,6 +18,7 @@ async fn main() {
     }));
 
     let app = Router::new()
+    .route("/login", post(handlers::login)) // Pública
     //Rutas de usuario
     .route("/users", get(handlers::list_users).post(handlers::create_user))
     .route("/users/:id", delete(handlers::delete_user))
