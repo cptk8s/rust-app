@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: usuario_api
+      POSTGRES_PASSWORD: p4ssw0rd_s3gur0
+      POSTGRES_DB: comunicaciones_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: rust_api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      # Estas variables coinciden con lo que espera nuestro código en main.rs
+      - DB_URL=db:5432/comunicaciones_db
+      - DB_USR=usuario_api
+      - DB_PWD=password_seguro
+      - RUST_LOG=info
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
