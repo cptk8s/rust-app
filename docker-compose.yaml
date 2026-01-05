@@ -24,7 +24,7 @@ services:
       # Estas variables coinciden con lo que espera nuestro código en main.rs
       - DB_URL=db:5432/comunicaciones_db
       - DB_USR=usuario_api
-      - DB_PWD=password_seguro
+      - DB_PWD=p4ssw0rd_s3gur0
       - RUST_LOG=info
     depends_on:
       - db
