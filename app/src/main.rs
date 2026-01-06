@@ -41,7 +41,7 @@ async fn main() {
         .layer(TraceLayer::new_for_http())
         .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", openapi::ApiDoc::openapi()));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     println!("🚀 Servidor en http://{}", addr);
     println!("📖 Swagger en http://{}/swagger-ui", addr);
 
