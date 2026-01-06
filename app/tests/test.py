@@ -24,7 +24,7 @@ def run_test():
 
     # 1. Login para obtener el token JWT
     logger.info("Paso 1: Intentando login...")
-    login_payload = {"usuario": "admin", "clave": "d3d1c4fc3Aa"}
+    login_payload = {"usuario": "admin", "clave": "admin123"}
     response = session.post(f"{BASE_URL}/login", json=login_payload)
     
     if response.status_code != 200:
